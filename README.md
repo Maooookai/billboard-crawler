@@ -10,4 +10,6 @@ You can download chromedriver from: https://chromedriver.chromium.org/downloads
 ### Scripts
 #### [200.py](200.py)
 Crawls current Billboard 200 data. Including album title, artist, this week's rank, last week's rank, peak rank, weeks on the chart for 200 albums. And format them to a xlsx file. The filename is based on current date.
-If loading website takes too long, you can click the cancel button on Chrome to skip loading. But make sure that rank information is already loaded.
+If loading website takes too long, you can click the cancel button on Chrome to skip loading. But make sure that rank information is already loaded.  
+#### [hdd.py](hdd.py)
+Crawls Hits Daily Double album sales data. Nearly same as Billboard 200.
