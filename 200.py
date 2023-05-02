@@ -32,7 +32,6 @@ def crawl(chromedriver_location):
     for album in all_albums:
         span_data = album.findAll('span', class_='c-label')
         if 'NEW' in span_data[1].text.strip() or 'RE' in span_data[1].text.strip():
-            print(span_data)
             this_week = span_data[0].text.strip()
             artist = span_data[3].text.strip()
             last_week = span_data[7].text.strip()
