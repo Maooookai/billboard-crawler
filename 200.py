@@ -37,14 +37,26 @@ def crawl(chromedriver_location):
             last_week = span_data[7].text.strip()
             peak_pos = span_data[8].text.strip()
             wks_on_chart = span_data[9].text.strip()
+            if wks_on_chart != '1':
+                trend = 'RE-ENTER'
+            else:
+                trend = 'NEW'
         else:
             this_week = span_data[0].text.strip()
             artist = span_data[1].text.strip()
             last_week = span_data[2].text.strip()
             peak_pos = span_data[3].text.strip()
             wks_on_chart = span_data[4].text.strip()
+            if int(this_week) < int(last_week):
+                trend = 'UP ↑'
+            elif int(this_week) > int(last_week):
+                trend = 'DOWN ↓'
+            elif int(this_week) == int(last_week):
+                trend = 'STAY →'
+            else:
+                trend = ''
         title = album.find('h3', {'id': 'title-of-a-story'}).text.strip()
-        data = [title, artist, this_week, last_week, peak_pos, wks_on_chart]
+        data = [trend, title, artist, this_week, last_week, peak_pos, wks_on_chart]
         print(data)
         billboard_200.append(data)
     driver.quit()
@@ -54,12 +66,13 @@ def crawl(chromedriver_location):
 def insert_data(data):
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-    sheet['A1'] = 'Album'
-    sheet['B1'] = 'Artist'
-    sheet['C1'] = 'This Week'
-    sheet['D1'] = 'Last Week'
-    sheet['E1'] = 'Peak Position'
-    sheet['F1'] = 'Weeks on Chart'
+    sheet['A1'] = 'Trend'
+    sheet['B1'] = 'Album'
+    sheet['C1'] = 'Artist'
+    sheet['D1'] = 'This Week'
+    sheet['E1'] = 'Last Week'
+    sheet['F1'] = 'Peak Position'
+    sheet['G1'] = 'Weeks on Chart'
 
     for row in data:
         sheet.append(row)
