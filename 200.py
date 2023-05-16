@@ -56,7 +56,7 @@ def crawl(chromedriver_location):
             else:
                 trend = ''
         title = album.find('h3', {'id': 'title-of-a-story'}).text.strip()
-        data = [trend, title, artist, this_week, last_week, peak_pos, wks_on_chart]
+        data = [this_week, trend, title, artist, last_week, peak_pos, wks_on_chart]
         print(data)
         billboard_200.append(data)
     driver.quit()
