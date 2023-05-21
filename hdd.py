@@ -20,6 +20,15 @@ def insert_data(data):
     workbook.save('HDD-' + str(datetime.now().date()) + '.xlsx')
 
 
+def format_number(num):
+    suffixes = ['', 'k', 'M', 'B', 'T']
+    magnitude = 0
+    while num >= 1000:
+        num /= 1000
+        magnitude += 1
+    return f'{num:.1f}{suffixes[magnitude]}'
+
+
 def crawl():
     url = 'https://hitsdailydouble.com/sales_plus_streaming'
 
@@ -40,7 +49,7 @@ def crawl():
         album = split[1].strip()
         last_week = last_weeks[i].text.strip()
         this_week = this_weeks[i].text.strip()
-        sale = sales[i].text.strip()
+        sale = format_number(int(sales[i].text.strip().replace(',', '')))
         data = [artist, album, this_week, last_week, sale]
         print(data)
         hdd.append(data)
