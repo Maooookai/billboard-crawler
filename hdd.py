@@ -10,8 +10,8 @@ def insert_data(data):
     sheet = workbook.active
     sheet['A1'] = 'Artist'
     sheet['B1'] = 'Album'
-    sheet['C1'] = 'This Week'
-    sheet['D1'] = 'Last Week'
+    sheet['C1'] = 'Last Week'
+    sheet['D1'] = 'This Week'
     sheet['E1'] = 'Sales'
 
     for row in data:
