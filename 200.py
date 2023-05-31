@@ -66,10 +66,10 @@ def crawl(chromedriver_location):
 def insert_data(data):
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-    sheet['A1'] = 'Trend'
-    sheet['B1'] = 'Album'
-    sheet['C1'] = 'Artist'
-    sheet['D1'] = 'This Week'
+    sheet['A1'] = 'This Week'
+    sheet['B1'] = 'Trend'
+    sheet['C1'] = 'Album'
+    sheet['D1'] = 'Artist'
     sheet['E1'] = 'Last Week'
     sheet['F1'] = 'Peak Position'
     sheet['G1'] = 'Weeks on Chart'
